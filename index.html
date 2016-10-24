@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title >tds</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="libs/css/libs.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" ng-if="corp.css" ng-href="..{{corp.css}}">-->
+</head>
+<body ng-controller="appCtrl as appCtrl">
+
+<div class="wel " ng-if="!vm.initialized">
+    <div class='loader loader-glisteningWindow'></div>
+    <div class="text">正在加载请稍后2</div>
+</div>
+<div class="alert-wrap " ng-if="vm.alerts.length" ng-class="{' show':vm.alerts.length}" style="display: none;">
+    <div class="alert" ng-repeat="alert in vm.alerts" ng-class=" alert.type"><i
+            class="icon  sigh ion-ios-information"></i> {{alert.msg}}
+        <i class=" pull-right icon ion-close" ng-click=" alert.close()"></i>
+    </div>
+</div>
+<div class="app-tip" ng-if="vm.tip" ng-class="{'show':vm.tip}" >
+    <i class="ion-ios-close-outline icon" ng-if="vm.tip.hasHideIcon" ng-click="vm.tip.hide()"></i>
+    <div ng-bind-html="vm.tip.msg"></div>
+</div>
+<ion-nav-view></ion-nav-view>
+<script  src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="libs/libs.js"></script>
+<script src="templates-app.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
